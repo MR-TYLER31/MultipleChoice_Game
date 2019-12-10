@@ -1,0 +1,49 @@
+  *, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded;
+  }
+
+  body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: #3299e3;
+  }
+
+  .btn {
+
+      color: white;
+  }
+
+  .container {
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+  }
+
+  .btn-warning {
+      width: 100%;
+      margin: 10px;
+      border: 1px solid #ff7308;
+  }
+
+  #start-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hide {
+    display: none;
+  }
