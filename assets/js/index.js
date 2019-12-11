@@ -36,9 +36,7 @@ function setNextQuestion() {
     answerBtn.empty();
  
     questionEl.text(question.title);
-    //create answer buttons for each item in answers choice array
     $.each(question.choices, function (index, choice) {
-        //create button, set text, add button class, and append to end for each choice
         var newBtn = $('<button>');
         newBtn.text(choice);
         newBtn.addClass('btn btn-warning');
