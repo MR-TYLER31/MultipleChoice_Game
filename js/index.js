@@ -1,94 +1,60 @@
+var startBtn = $('#start-btn');
+var questionBoxEl = $('#question-box');
+var questionEl = $('#question');
+var answerEl = $('#button-group')
+let currentQuestion;
+
+
+var questions = [
+    {
+      title: 'What is the capitol of Utah?',
+    }
+  ]
 
 
 
+$(document).ready(function() {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Store Elements in variables
-// var highScore = $('#high-scores');
-// var timer = $('#timer');
-// var start = $('#start');
-// var startBtn = $('#start-btn');
-// var quiz = $('#quiz');
-// var quizTitle = $('#title');
-// var choices = $('choices');
-// var choiceA =  $('#a');
-// var choiceB =  $('#b');
-// var choiceC =  $('#c');
-// var answer = $('#answer');
-// var score = 0;
-
-// var questions = [
-//     {
-//       title: "Commonly used data types DO NOT include:",
-//       choices: ["strings", "booleans", "alerts", "numbers"],
-//       answer: "alerts"
-//     },
-//     {
-//       title: "The condition in an if / else statement is enclosed within ____.",
-//       choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-//       answer: "parentheses"
-//     },
-//     ///etc.
-//   ];
-
-
-// $(document).ready(function(){
+    
+    startBtn.on('click', startQuiz);
    
-   
-//     $("button").click(function(){
-//       $("button").hide();
+    function startQuiz() {
+            startBtn.addClass('hide');
+            currentQuestion = 0;
+            questionBoxEl.removeClass('hide');
+            setNextQuestion();
+    }
 
-//       for(var i = 0; i < questions.length; i++) {
-//           quiz.show();
-//         var quizQuestions = questions[i];
-//         quiz.append($(`<div class="card">
-//         <h3">${quizQuestions.title}</h3>
-//         <div class="card-body">
-//             <button>${quizQuestions.choices}</button>
-//             <button id="button-navigate-" type="button" class="btn btn-primary">Find</button>
-//         </div>
-//         </div>`));
-//       }
-      
-//     });
 
-//   });
+function setNextQuestion() {
+    showQuestion(currentQuestion);
+
+    
+  }
+  
+  function showQuestion() {
+      var question = questions
+    questionBoxEl.prepend(`<div id="question">
+    <h3>${questions[0].title}</h3> </div>`)
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
