@@ -4,6 +4,8 @@ var questionEl = $('#question');
 var answerBtn = $('#answer-buttons')
 var nextBtn = $('#next-btn')
 var questionIndex = 0;
+var scrore = 0;
+var container = $('.container')
 var currentQuestion = questionsArray[questionIndex];
 
 
@@ -15,6 +17,7 @@ $(document).ready(function() {
 
     
     startBtn.on('click', startQuiz);
+    answerBtn.on('click', selectAnswer);
    
     function startQuiz() {
             startBtn.addClass('hide');
@@ -25,18 +28,14 @@ $(document).ready(function() {
     }
 
 
-function setNextQuestion() {
-    resetState();
-    showQuestion(currentQuestion);
 
-  }
   
   // show question function
-  function showQuestion(question) {
+  function showQuestion() {
     answerBtn.empty();
  
-    questionEl.text(question.title);
-    $.each(question.choices, function (index, choice) {
+    questionEl.text(currentQuestion.title);
+    $.each(currentQuestion.choices, function (index, choice) {
         var newBtn = $('<button>');
         newBtn.text(choice);
         newBtn.addClass('btn btn-warning');
@@ -44,13 +43,22 @@ function setNextQuestion() {
     })
   }
 
-  function resetState() {
-    
-  }
-
-  function selectAnswer(event) {
+  function setNextQuestion() {
+    // resetState();
+    showQuestion(currentQuestion);
 
   }
+
+  function selectAnswer(e) {
+    if (e.target.innerHTML === currentQuestion.answer) {
+      $(".container").css("background-color", "#28a745")
+      nextBtn.removeClass('hide');
+    } else {
+      $(".container").css("background-color", "#dc3545");
+      nextBtn.removeClass('hide');
+    }
+};
+
 });
 
 
