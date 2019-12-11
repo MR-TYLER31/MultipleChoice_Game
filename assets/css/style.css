@@ -6,7 +6,7 @@
       margin: 0;
       padding: 0;
       background-color: #3299e3;
-      display: flex;
+      /* display: flex; */
       width: 100vw;
       height: 50vh;
       justify-content: center;
@@ -17,7 +17,7 @@
       color: white;
   }
 
-  .container {
+  .card {
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
