@@ -10,14 +10,6 @@ var seconds = $('#countdown');
 var currentQuestion = questionsArray[questionIndex];
 
 
-
-var countdown = setInterval(function() {
-  timer--;
-  document.getElementById("timer").textContent = timer;
-  if (timer <= 0) clearInterval(countdown);
-}, 1000);
-
-
 $(document).ready(function() {
 
     
@@ -38,9 +30,9 @@ $(document).ready(function() {
             questionIndex = 0;
             currentQuestion = questionsArray[questionIndex];
             questionBoxEl.removeClass('hide');
-            setNextQuestion(currentQuestion);
-
-           
+            showQuestion(currentQuestion);
+ 
+            console.log(currentQuestion)   
     }
 
 
@@ -49,35 +41,35 @@ $(document).ready(function() {
   // show question function
   function showQuestion() {
     answerBtn.empty();
- 
+
     questionEl.text(currentQuestion.title);
     $.each(currentQuestion.choices, function (index, choice) {
         var newBtn = $('<button>');
         newBtn.text(choice);
         newBtn.addClass('btn btn-warning');
         answerBtn.append(newBtn);
+        questionIndex++
     })
 
     nextBtn.removeClass('hide')
   }
   
-  function setNextQuestion() {
-    questionIndex++
+  function setNextQuestion() {   
+
     showQuestion(currentQuestion);
-    
-    // nextBtn.addClass('hide');
-      currentQuestion = questionsArray[questionIndex];
-     
-      
-      // selectAnswer();
-      // nextBtn.removeClass('hide');
+ 
+      currentQuestion = questionsArray[questionIndex];  
+   
   }
 
   function selectAnswer(e) {
+    console.log(e.target.innerHTML)
+    console.log(currentQuestion)
     if (e.target.innerHTML === currentQuestion.answer) {
       $(".card").css("background-color", "#28a745")
     } else if ($(e.target).text() !== currentQuestion.answer && $(e.target).hasClass('btn')) {
-      $(".card").css("background-color", "#dc3545");
+      $(".card").css("background-color", "#dc3545")
+
     
     } 
 };
