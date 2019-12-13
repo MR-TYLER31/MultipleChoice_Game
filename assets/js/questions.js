@@ -14,6 +14,5 @@ var questionsArray = [
       choices: ["provo", "salt lake city", "ogden", "saint george"],
       answer: "salt lake city"
     }
-  
-  
+
   ]

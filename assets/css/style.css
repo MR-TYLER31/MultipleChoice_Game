@@ -11,6 +11,7 @@
       height: 50vh;
       justify-content: center;
       align-items: center;
+      font-family: 'Rock Salt', cursive;
   }
 
   .btn {
@@ -52,4 +53,13 @@
   
   .hide {
     display: none;
+  }
+
+  #user-form {
+   margin: 0 auto;
+  }
+
+  #submit-button {
+    margin: 0 auto;
+    width: 100%;
   }
