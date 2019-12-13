@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 function startClock(){
    // Once the start  button is clicked the quiz and time will start
-   var seconds = document.getElementById("countdown").textContent;
+   var seconds = $("#countdown").text();
        seconds--;
        document.getElementById("countdown").textContent = seconds;
        if (seconds <= 0) {
@@ -45,8 +45,6 @@ function startClock(){
             currentQuestion = questionsArray[questionIndex];
             questionBoxEl.removeClass('hide');
             showQuestion(currentQuestion);
- 
-            // console.log(currentQuestion)   
     }
 
 
@@ -57,9 +55,7 @@ function startClock(){
     answerBtn.empty();
     $(".card").css("background-color", "#ffffff")  
     var currentQuestion = questionsArray[questionIndex];
-    if(questionIndex >= questionsArray.length) {
-      gameOver()
-}
+    
    
     questionEl.text(currentQuestion.title);
     $.each(currentQuestion.choices, function (index, choice) {
@@ -69,39 +65,46 @@ function startClock(){
         answerBtn.append(newBtn); 
     })
     
-    questionIndex++
-    nextBtn.removeClass('hide')
+      questionIndex++
+      nextBtn.removeClass('hide')
+      if(questionIndex >= questionsArray.length) {
+        gameOver()
+    }
  
   }
 
 
   function selectAnswer(e) {
-    // console.log(e.target.innerHTML)
-    // console.log(currentQuestion)
+    
     if (e.target.innerHTML === currentQuestion.answer) {
       $(".card").css("background-color", "#28a745")
       score += 10;
+
     } else if ($(e.target).text() !== currentQuestion.answer && $(e.target).hasClass('btn')) {
       $(".card").css("background-color", "#dc3545")
       score -= 10
     
     } 
     console.log(score)
-
 };
 
 // Game over function will display the header and user name form to submit to high scores
-function gameOver() {
-questionEl.empty();
-runningTimer = ""
-  nextBtn.addClass('hide')
-  gameOverH1.removeClass('hide')
-  userForm.removeClass('hide')
+  function gameOver() {
+    
+    questionEl.empty();
+    answerBtn.empty();
+    runningTimer = clearInterval(runningTimer)
+    finalScore = score - parseInt(seconds);
+    console.log(score)
+    console.log(seconds)
+    // console.log(finalScore)
+      nextBtn.addClass('hide')
+      gameOverH1.removeClass('hide')
+      userForm.removeClass('hide')
 
-}
+    }
 
 });
-
 
 
 
