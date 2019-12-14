@@ -15,8 +15,8 @@ var userName = $('#user-name');
 var submitBtn = $('#submit-button');
 var userScore = $('#user-score');
 var runningTimer;
-var usersArray = [];
 var currentQuestion;
+var users = []
 
 $(document).ready(function() {
 
@@ -107,16 +107,14 @@ function startClock(){
     }
 
 function submitUser (e) {
+  e.preventDefault()
+  var newItem = $('<li>');
+  newItem.text(`${userName.val()} - ${score} points`);
+  userList.append(newItem);
+  users.push(newItem)  
+};
 
-        var newItem = $('<li>');
-        newItem.text(`${userName} - ${score}`);
-        userList.append(newItem);
 
-  
-      e.preventDefault()
-  };
-    
-  
 });
 
 
