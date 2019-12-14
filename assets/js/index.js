@@ -15,8 +15,7 @@ var userName = $('#user-name');
 var submitBtn = $('#submit-button');
 var userScore = $('#user-score');
 var runningTimer;
-
-
+var usersArray = [];
 
 $(document).ready(function() {
 
@@ -38,8 +37,7 @@ function startClock(){
        }
       }
 
-      
- 
+    
    
     function startQuiz() {
       startClock();
@@ -106,17 +104,29 @@ function startClock(){
       userForm.removeClass('hide')
 
     }
-  
-    // Get the user name input and store it in the modal for local storage
-function submitUser(e) {
-  var user = $('<h1>');
-  user.addClass('list-item');
-  user.text(`${userName.val()} : ${score} points`)
-  userList.append(user);
- 
-  e.preventDefault()
-}
-});
 
+function submitUser (e) {
+
+      //adds user and score to user array, and sorts/cuts off under 5 top scores
+      
+
+      //Set JSON usersArr to current Arr which has the new spliced array
+      localStorage.setItem('usersArr', JSON.stringify(usersArr));
+      $.each(usersArr, function (index, options) {
+        //create list item, set text, and append to the OL.
+        let newItem = $('<li>');
+        newItem.text(`${userName} - ${score}`);
+        userList.append(newItem);
+
+        usersArr.push(userName);
+      usersArr.sort((a,b) => b.score - a.score );
+      usersArr.splice(5);
+    })
+  
+      e.preventDefault()
+  };
+    
+  
+});
 
 

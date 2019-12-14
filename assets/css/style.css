@@ -14,7 +14,9 @@
       align-items: center;
       font-family: 'Acme', sans-serif;
   } 
-
+#high-score {
+  text-decoration: none;
+}
   .btn {
       color: white;
   }
