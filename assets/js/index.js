@@ -67,10 +67,12 @@ function startClock(){
         newBtn.addClass('btn btn-warning');
         answerBtn.append(newBtn); 
     })
-    
     nextBtn.removeClass('hide')
+    
+    
       if(currentQuestion >= questionsArray.length) {
-       
+        
+        gameOver()
     }
  
   }
@@ -78,7 +80,7 @@ function startClock(){
 
   function selectAnswer(e) {
     
-    if (e.target.innerHTML === currentQuestion.answer) {
+    if ($(e.target).text() === currentQuestion.answer) {
       $(".card").css("background-color", "#28a745")
       score += 10;
 
@@ -105,10 +107,8 @@ function startClock(){
       userForm.removeClass('hide')
 
     }
-    gameOver()
-});
-
-// Get the user name input and store it in the modal for local storage
+  
+    // Get the user name input and store it in the modal for local storage
 function submitUser(e) {
   var user = $('<h1>');
   user.addClass('list-item');
@@ -117,21 +117,7 @@ function submitUser(e) {
  
   e.preventDefault()
 }
+});
 
-// renderLastRegistered();
 
-// function displayMessage(type, message) {
-//   msgDiv.textContent = message;
-//   msgDiv.setAttribute("class", type);
-// }
 
-// function renderLastRegistered() {
-//   var email = localStorage.getItem("user");
-
-//   if (email && password === null) {
-//     return;
-//   }
-
-//   userEmailSpan.textContent = email;
-//   userPasswordSpan.textContent = password;
-// }
