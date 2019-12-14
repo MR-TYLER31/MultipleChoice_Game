@@ -80,7 +80,7 @@ function startClock(){
 
   function selectAnswer(e) {
     
-    if ($(e.target).text() === currentQuestion.answer) {
+    if (e.target.innerHTML === (currentQuestion.answer)) {
       $(".card").css("background-color", "#28a745")
       score += 10;
 
@@ -98,9 +98,8 @@ function startClock(){
     questionEl.empty();
     answerBtn.empty();
     runningTimer = clearInterval(runningTimer)
-    finalScore = 0;
-    console.log(finalScore)
-    console.log(seconds)
+    userScore.removeClass('hide')
+    userScore.text(`Score: ${score} points`)
     // console.log(finalScore)
       nextBtn.addClass('hide')
       gameOverH1.removeClass('hide')
@@ -112,7 +111,7 @@ function startClock(){
 function submitUser(e) {
   var user = $('<h1>');
   user.addClass('list-item');
-  user.text(`${userName.val()} - ${score}`)
+  user.text(`${userName.val()} : ${score} points`)
   userList.append(user);
  
   e.preventDefault()
