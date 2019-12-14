@@ -10,6 +10,8 @@ var seconds = $('#countdown');
 var gameOverDiv = $('#game-over')
 var gameOverH1 = $('#game-over-header');
 var userForm = $('#user-form')
+var userList = $('#user-list')
+var userName = $('#user-name');
 var submitBtn = $('#submit-button');
 var userScore = $('#user-score');
 var runningTimer;
@@ -22,6 +24,7 @@ $(document).ready(function() {
     startBtn.on('click', startQuiz);
     answerBtn.on('click', selectAnswer);
     nextBtn.on('click', showQuestion);
+    submitBtn.on('click', submitUser);
 
 function startClock(){
    // Once the start  button is clicked the quiz and time will start
@@ -65,8 +68,8 @@ function startClock(){
         answerBtn.append(newBtn); 
     })
     
-      nextBtn.removeClass('hide')
-      if(questionIndex >= questionsArray.length) {
+    nextBtn.removeClass('hide')
+      if(currentQuestion >= questionsArray.length) {
        
     }
  
@@ -93,8 +96,8 @@ function startClock(){
     questionEl.empty();
     answerBtn.empty();
     runningTimer = clearInterval(runningTimer)
-    finalScore = score - parseInt(seconds);
-    console.log(score)
+    finalScore = 0;
+    console.log(finalScore)
     console.log(seconds)
     // console.log(finalScore)
       nextBtn.addClass('hide')
@@ -102,5 +105,33 @@ function startClock(){
       userForm.removeClass('hide')
 
     }
-
+    gameOver()
 });
+
+// Get the user name input and store it in the modal for local storage
+function submitUser(e) {
+  var user = $('<h1>');
+  user.addClass('list-item');
+  user.text(`${userName.val()} - ${score}`)
+  userList.append(user);
+ 
+  e.preventDefault()
+}
+
+// renderLastRegistered();
+
+// function displayMessage(type, message) {
+//   msgDiv.textContent = message;
+//   msgDiv.setAttribute("class", type);
+// }
+
+// function renderLastRegistered() {
+//   var email = localStorage.getItem("user");
+
+//   if (email && password === null) {
+//     return;
+//   }
+
+//   userEmailSpan.textContent = email;
+//   userPasswordSpan.textContent = password;
+// }
