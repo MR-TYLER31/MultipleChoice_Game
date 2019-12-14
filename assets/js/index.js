@@ -56,7 +56,7 @@ function startClock(){
     $(".card").css("background-color", "#ffffff")  
     var currentQuestion = questionsArray[questionIndex];
     
-   
+    questionIndex++
     questionEl.text(currentQuestion.title);
     $.each(currentQuestion.choices, function (index, choice) {
         var newBtn = $('<button>');
@@ -65,10 +65,9 @@ function startClock(){
         answerBtn.append(newBtn); 
     })
     
-      questionIndex++
       nextBtn.removeClass('hide')
       if(questionIndex >= questionsArray.length) {
-        gameOver()
+       
     }
  
   }
@@ -105,22 +104,3 @@ function startClock(){
     }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

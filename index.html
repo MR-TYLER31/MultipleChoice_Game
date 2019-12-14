@@ -14,78 +14,81 @@
   </head>
   <body>
 
-           <!-- Navbar to display the high scores and timer -->
-        <nav class="navbar mt-5">
-            <div class="container">
-                    <a href="#" data-toggle="modal" data-target="#exampleModal"><h2 class="text-white">High Scores</h2></a>
-                    <h2 class="text-white">Timer: <span id="countdown">90</span></h2>
-            </div>     
-        </nav> 
-
-        <!-- Modal to display users high scores -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Users</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-danger">Clear Users</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- question section -->
-        <div class="container card mt-5">
-            <div id="question-box" class=" card-body hide">
-                <div id="question">Question</div> 
-                  <div id="answer-buttons" class="btn-grid">             
-                        <button class="btn btn-warning"></button>                          
-                        <button class="btn btn-warning"></button>  
-                        <button class="btn btn-warning"></button>        
-                        <button class="btn btn-warning"></button>                      
-                      </div>                 
-                  </div>
-
-                  <!-- gameover page -->
-                  <div class="game-over">
-                      <h1 id="game-over-header" class="text-center hide">Game Over</h1>
-                      <h3 class="hide">Score:<span id="user-score"></span></h3>
-                      <form id="user-form" class="hide">
-                          <div class="form-group">
-                              <label for="username"></label>
-                              <input type="text" class="form-control" id="user-name" placeholder="Enter username">
-                              <button id="submit-button" class="btn btn-primary mt-4 align-center" type="submit">Submit</button>
-                            </div>
-                      </form>
-                      <button id="restart" class="btn btn hide"></button>
-                  </div>
-
-                  <!-- buttons -->
-                  <div class="controls">
-                        <button id="start-btn" class="btn btn-success">Start Quiz</button>
-                        <button id="next-btn" class="btn btn-primary hide">Next Question</button>
-                    </div>       
-                </div>
-
-                <!-- display the header of the game -->
+             <!-- Navbar to display the high scores and timer -->
+             <nav class="navbar mt-5">
                 <div class="container">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h1 id="header" class="text-white text-center mt-5">The Coding Quiz</h1>
+                        <a href="#" data-toggle="modal" data-target="#exampleModal"><h2 class="text-white">High Scores</h2></a>
+                        <h2 class="text-white">Timer: <span id="countdown">90</span></h2>
+                </div>     
+            </nav> 
+    
+            <!-- Modal to display users high scores -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Users</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-danger">Clear Users</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
                     </div>
                   </div>
                 </div>
+    
+                <!-- question section -->
+            <div class="container card mt-5">
+                <div id="question-box" class=" card-body hide">
+                    <div id="question">Question</div> 
+                      <div id="answer-buttons" class="btn-grid">             
+                            <button class="btn btn-warning"></button>                          
+                            <button class="btn btn-warning"></button>  
+                            <button class="btn btn-warning"></button>        
+                            <button class="btn btn-warning"></button>                      
+                          </div>                 
+                      </div>
+    
+                      <!-- gameover page -->
+                      <div class="game-over">
+                          <h1 id="game-over-header" class="text-center hide">Game Over</h1>
+                          <h3 class="hide">Score:<span id="user-score"></span></h3>
+                          <form id="user-form" class="hide">
+                              <div class="form-group">
+                                  <label for="username"></label>
+                                  <input type="text" class="form-control" id="user-name" placeholder="Enter username">
+                                  <button id="submit-button" class="btn btn-primary mt-4 align-center" type="submit">Submit</button>
+                                </div>
+                          </form>
+                          <button id="restart" class="btn btn hide"></button>
+                      </div>
+    
+                      <!-- buttons -->
+                      <div class="controls">
+                            <button id="start-btn" class="btn btn-success">Start Quiz</button>
+                            <button id="next-btn" class="btn btn-primary hide">Next Question</button>
+                        </div>       
+                    </div>
+    
+                    <!-- display the header of the game -->
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h1 id="header" class="text-white text-center mt-5">The Coding Quiz</h1>
+                        </div>
+                      </div>
+                    </div>
+
+               
+
+
            
-      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="assets/js/questions.js"></script>
