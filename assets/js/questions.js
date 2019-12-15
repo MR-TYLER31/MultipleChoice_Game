@@ -10,9 +10,19 @@ var questionsArray = [
       answer: "parentheses"
     },
     {
-      title: "What is the capitol of Utah.",
-      choices: ["provo", "salt lake city", "ogden", "saint george"],
-      answer: "salt lake city"
+      title: "Which of these are HTML tages",
+      choices: ["p", "ID", "onClick", "CSS"],
+      answer: "p"
+    },
+    {
+      title: "You define (and create) a JavaScript object with __.",
+      choices: ["script tags", "quotes", "object literal", "curly brackets"],
+      answer: "object literal"
+    },
+    {
+      title: "Get all the items from a array with__",
+      choices: ["Assign Variable", "Boolean", "Loop", "Conditional"],
+      answer: "Loop"
     }
 
   ]

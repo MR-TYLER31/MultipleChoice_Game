@@ -1,5 +1,4 @@
 var startBtn = $('#start-btn');
-// var restartBtn = $('#restart-btn')
 var questionBoxEl = $('#question-box');
 var questionEl = $('#question');
 var answerBtn = $('#answer-buttons');
@@ -18,7 +17,9 @@ var userScore = $('#user-score');
 var runningTimer;
 var currentQuestion;
 let usersArr = []
-var clearUsers = $('#clear-users');
+var clearUsers = $('#clear-users')
+
+
 
 
 $(document).ready(function() {
@@ -30,6 +31,7 @@ $(document).ready(function() {
     submitBtn.on('click', submitUser);
     clearUsers.on('click', clearScores)
     // restartBtn.on('click', restartQuiz)
+
 
 function startClock(){
    // Once the start  button is clicked the quiz and time will start
@@ -45,7 +47,7 @@ function startClock(){
       }
 
     
-   
+   // Starts the quiz for user
     function startQuiz() {
       startClock();
             startBtn.addClass('hide');
@@ -82,9 +84,9 @@ function startClock(){
     
   }
 
-
+// Select the question choices, correct will be gree, wrong will be red background
   function selectAnswer(e) {
-    console.log(e.target);
+  
     
     if (e.target.innerHTML === (currentQuestion.answer)) {
       $(".card").css("background-color", "#28a745")
@@ -94,16 +96,14 @@ function startClock(){
       $(".card").css("background-color", "#dc3545")
     
     } 
-    console.log(score)
+    // console.log(score)
 };
 
 // Game over function will display the header and user name form to submit to high scores
-  function gameOver() {
-    
+  function gameOver() { 
     questionEl.empty();
     $(".card").css("background-color", "#ffffff")  
     answerBtn.empty();
-    // clearInterval(runningTimer)
     clearInterval(runningTimer);
     userScore.removeClass('hide')
     userScore.text(`Score: ${score} points`)
@@ -115,6 +115,10 @@ function startClock(){
       
     }
 
+
+
+
+// Submit user and score 
 function submitUser (e) {
   e.preventDefault()
   clearInterval(runningTimer);
@@ -127,28 +131,22 @@ function submitUser (e) {
   userScore.addClass('hide')
   startBtn.removeClass('hide');
   userName.addClass('hide')
-
-  localStorage.setItem(usersArr);
-  
-
-
-
  
   resetQuiz()
  
 };
 
-
+// reset so user can retake the quiz
 function resetQuiz() {
   var seconds = $("#countdown").text(30);
   questionBoxEl.addClass('hide');
   
 }
 
+// Clear users and scores
 function clearScores () {
   userList.empty();
   usersArr = [];
-  // localStorage.setItem('usersArr', '[]');
   console.log(usersArr)
 
 }
