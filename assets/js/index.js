@@ -112,7 +112,16 @@ function submitUser (e) {
   newItem.text(`${userName.val()} - ${score} points`);
   userList.append(newItem);
   users.push(newItem)  
+
+  userForm.addClass('hide')
+  gameOverH1.addClass('hide');
+  userScore.addClass('hide')
+  startBtn.removeClass('hide');
+  userName.addClass('hide')
 };
+
+
+
 
 
 });
