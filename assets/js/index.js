@@ -1,4 +1,5 @@
 var startBtn = $('#start-btn');
+// var restartBtn = $('#restart-btn')
 var questionBoxEl = $('#question-box');
 var questionEl = $('#question');
 var answerBtn = $('#answer-buttons');
@@ -16,7 +17,9 @@ var submitBtn = $('#submit-button');
 var userScore = $('#user-score');
 var runningTimer;
 var currentQuestion;
-var users = []
+let usersArr = []
+var clearUsers = $('#clear-users');
+
 
 $(document).ready(function() {
 
@@ -25,13 +28,16 @@ $(document).ready(function() {
     answerBtn.on('click', selectAnswer);
     nextBtn.on('click', showQuestion);
     submitBtn.on('click', submitUser);
+    clearUsers.on('click', clearScores)
+    // restartBtn.on('click', restartQuiz)
 
 function startClock(){
    // Once the start  button is clicked the quiz and time will start
    var seconds = $("#countdown").text();
        seconds--;
-       document.getElementById("countdown").textContent = seconds;
+       $("#countdown").text(seconds);
        if (seconds <= 0) {
+        clearTimeout(seconds);
          gameOver();
        } else {
         runningTimer = setTimeout(startClock, 1000);
@@ -97,31 +103,55 @@ function startClock(){
     questionEl.empty();
     $(".card").css("background-color", "#ffffff")  
     answerBtn.empty();
-    runningTimer = clearInterval(runningTimer)
+    // clearInterval(runningTimer)
+    clearInterval(runningTimer);
     userScore.removeClass('hide')
     userScore.text(`Score: ${score} points`)
       nextBtn.addClass('hide')
       gameOverH1.removeClass('hide')
       userForm.removeClass('hide')
-
+      userName.removeClass('hide')
+      userName.val("")
+      
     }
 
 function submitUser (e) {
   e.preventDefault()
+  clearInterval(runningTimer);
   var newItem = $('<li>');
-  newItem.text(`${userName.val()} - ${score} points`);
+  newItem.text(`${userName.val()} : ${score} points`);
   userList.append(newItem);
-  users.push(newItem)  
-
+  usersArr.push(newItem)  
   userForm.addClass('hide')
   gameOverH1.addClass('hide');
   userScore.addClass('hide')
   startBtn.removeClass('hide');
   userName.addClass('hide')
+
+  localStorage.setItem(usersArr);
+  
+
+
+
+ 
+  resetQuiz()
+ 
 };
 
 
+function resetQuiz() {
+  var seconds = $("#countdown").text(30);
+  questionBoxEl.addClass('hide');
+  
+}
 
+function clearScores () {
+  userList.empty();
+  usersArr = [];
+  // localStorage.setItem('usersArr', '[]');
+  console.log(usersArr)
+
+}
 
 
 });
