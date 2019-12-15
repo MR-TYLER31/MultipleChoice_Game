@@ -11,12 +11,12 @@ var gameOverDiv = $('#game-over')
 var gameOverH1 = $('#game-over-header');
 var userForm = $('#user-form')
 var userList = $('#user-list')
-var userName = $('#user-name');
 var submitBtn = $('#submit-button');
 var userScore = $('#user-score');
+var userName = $('#user-name')
 var runningTimer;
 var currentQuestion;
-let usersArr = []
+var usersArr = [];
 var clearUsers = $('#clear-users')
 
 
@@ -132,9 +132,25 @@ function submitUser (e) {
   startBtn.removeClass('hide');
   userName.addClass('hide')
  
+
+  storeTaskInLocalStorage(newItem.val());
   resetQuiz()
  
 };
+
+// Store Task
+function storeTaskInLocalStorage(task) {
+  let usersArr;
+  if(localStorage.getItem('tasks') === null){
+    usersArr= [];
+  } else {
+    usersArr = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  usersArr.push(task);
+
+  localStorage.setItem('tasks', JSON.stringify(usersArr));
+}
 
 // reset so user can retake the quiz
 function resetQuiz() {
