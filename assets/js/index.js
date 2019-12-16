@@ -18,12 +18,16 @@ var runningTimer;
 var currentQuestion;
 var usersArr = [];
 var clearUsers = $('#clear-users')
+var newItem = $('<li>');
 
-
+console.log(JSON.parse(localStorage.getItem('users')));
 
 
 $(document).ready(function() {
-
+  var loadUsers = JSON.parse(localStorage.getItem('users'));
+  console.log(loadUsers)
+  newItem.text(`${loadUsers.username} : ${loadUsers.userscore} points`);
+  userList.append(newItem);
     
     startBtn.on('click', startQuiz);
     answerBtn.on('click', selectAnswer);
@@ -125,33 +129,41 @@ function submitUser (e) {
   console.log(userName.val())
   clearInterval(runningTimer);
   var newItem = $('<li>');
-  newItem.text(`${userName.val()} : ${score} points`);
+  newItem.text(`${loadUsers.username} : ${loadUsers.userscore} points`);
   userList.append(newItem);
   usersArr.push(newItem)  
-  userForm.addClass('hide')
+  userForm.addClass('hide');
   gameOverH1.addClass('hide');
   userScore.addClass('hide')
   startBtn.removeClass('hide');
   userName.addClass('hide')
+  var info = {
+    username: userName.val(),
+    userscore: score
+  }
+  console.log(info)
  
 
-  storeTaskInLocalStorage(newItem.val());
+  storeTaskInLocalStorage(info);
   resetQuiz()
  
 };
 
-// Store Task
+// Store Users
 function storeTaskInLocalStorage(task) {
   let usersArr;
-  if(localStorage.getItem('tasks') === null){
+  if(localStorage.getItem('users') === null){
     usersArr= [];
   } else {
-    usersArr = JSON.parse(localStorage.getItem('tasks'));
+    usersArr = JSON.parse(localStorage.getItem('users'));
   }
 
   usersArr.push(task);
+  console.log(usersArr)
 
-  localStorage.setItem('tasks', JSON.stringify(usersArr));
+  localStorage.setItem('users', JSON.stringify(task));
+
+  
 }
 
 // reset so user can retake the quiz
