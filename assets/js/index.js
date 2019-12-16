@@ -121,6 +121,8 @@ function startClock(){
 // Submit user and score 
 function submitUser (e) {
   e.preventDefault()
+  userName = $('#user-name')
+  console.log(userName.val())
   clearInterval(runningTimer);
   var newItem = $('<li>');
   newItem.text(`${userName.val()} : ${score} points`);
@@ -169,5 +171,3 @@ function clearScores () {
 
 
 });
-
-
