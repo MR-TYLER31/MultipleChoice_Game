@@ -14,31 +14,28 @@ var userList = $('#user-list')
 var submitBtn = $('#submit-button');
 var userScore = $('#user-score');
 var userName = $('#user-name')
+var clearUsers = $('#clear-users')
+var viewScore = $('#high-scores')
 var runningTimer;
 var currentQuestion;
-var usersArr = [];
-var clearUsers = $('#clear-users')
-var newItem = $('<li>');
-
-console.log(JSON.parse(localStorage.getItem('users')));
+// var usersArr = [];
+let usersArr = JSON.parse(localStorage.getItem("usersArr")) || [];
 
 
 $(document).ready(function() {
-  var loadUsers = JSON.parse(localStorage.getItem('users'));
-  console.log(loadUsers)
-  newItem.text(`${loadUsers.username} : ${loadUsers.userscore} points`);
-  userList.append(newItem);
     
     startBtn.on('click', startQuiz);
     answerBtn.on('click', selectAnswer);
     nextBtn.on('click', showQuestion);
     submitBtn.on('click', submitUser);
-    clearUsers.on('click', clearScores)
+    // viewScore.on('click', displayUsers)
+    // clearUsers.on('click', clearScores)
     // restartBtn.on('click', restartQuiz)
 
 
 function startClock(){
    // Once the start  button is clicked the quiz and time will start
+   userScore.text("")
    var seconds = $("#countdown").text();
        seconds--;
        $("#countdown").text(seconds);
@@ -59,6 +56,7 @@ function startClock(){
             currentQuestion = questionsArray[questionIndex];
             questionBoxEl.removeClass('hide');
             showQuestion(currentQuestion);
+
     }
 
 
@@ -117,21 +115,15 @@ function startClock(){
       userName.removeClass('hide')
       userName.val("")
       
+      
     }
-
-
-
-
 // Submit user and score 
 function submitUser (e) {
   e.preventDefault()
   userName = $('#user-name')
   console.log(userName.val())
   clearInterval(runningTimer);
-  var newItem = $('<li>');
-  newItem.text(`${loadUsers.username} : ${loadUsers.userscore} points`);
-  userList.append(newItem);
-  usersArr.push(newItem)  
+  
   userForm.addClass('hide');
   gameOverH1.addClass('hide');
   userScore.addClass('hide')
@@ -141,7 +133,12 @@ function submitUser (e) {
     username: userName.val(),
     userscore: score
   }
-  console.log(info)
+
+  var newItem = $('<li>');
+  newItem.text(`${info.username} : ${info.userscore} points`);
+  userList.append(newItem);
+  // usersArr.push(newItem);
+  console.log(info);
  
 
   storeTaskInLocalStorage(info);
@@ -150,35 +147,28 @@ function submitUser (e) {
 };
 
 // Store Users
-function storeTaskInLocalStorage(task) {
+function storeTaskInLocalStorage(user) {
   let usersArr;
-  if(localStorage.getItem('users') === null){
+  if(localStorage.getItem('usersArr') === null){
     usersArr= [];
   } else {
-    usersArr = JSON.parse(localStorage.getItem('users'));
+    usersArr = JSON.parse(localStorage.getItem('usersArr'));
   }
 
-  usersArr.push(task);
+  // usersArr.push();
   console.log(usersArr)
 
-  localStorage.setItem('users', JSON.stringify(task));
+  localStorage.setItem('usersArr', JSON.stringify(user));
 
   
 }
+
 
 // reset so user can retake the quiz
 function resetQuiz() {
   var seconds = $("#countdown").text(30);
   questionBoxEl.addClass('hide');
-  
-}
-
-// Clear users and scores
-function clearScores () {
-  userList.empty();
-  usersArr = [];
-  console.log(usersArr)
-
+  score = 0;
 }
 
 
