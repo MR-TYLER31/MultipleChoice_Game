@@ -147,7 +147,7 @@ function submitUser (e) {
 };
 
 // Store Users
-function storeTaskInLocalStorage(user) {
+function storeTaskInLocalStorage(info) {
   let usersArr;
   if(localStorage.getItem('usersArr') === null){
     usersArr= [];
@@ -155,11 +155,11 @@ function storeTaskInLocalStorage(user) {
     usersArr = JSON.parse(localStorage.getItem('usersArr'));
   }
 
-  // usersArr.push();
+  // usersArr.push(info);
   console.log(usersArr)
 
-  localStorage.setItem('usersArr', JSON.stringify(user));
-
+  localStorage.setItem('usersArr', JSON.stringify(info));
+//  usersArr.push(info);
   
 }
 
