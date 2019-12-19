@@ -21,6 +21,8 @@ var currentQuestion;
 // var usersArr = [];
 let usersArr = JSON.parse(localStorage.getItem("usersArr")) || [];
 
+ 
+
 
 $(document).ready(function() {
     
@@ -128,33 +130,47 @@ function submitUser (e) {
   gameOverH1.addClass('hide');
   userScore.addClass('hide')
   startBtn.removeClass('hide');
-  userName.addClass('hide')
-  var info = {
+  userName.addClass('hide');
+
+  usersArr.push({
     username: userName.val(),
     userscore: score
-  }
+  });
 
-  var newItem = $('<li>');
-  newItem.text(`${info.username} : ${info.userscore} points`);
-  userList.append(newItem);
+  
+renderUser()
+ 
+  storeTaskInLocalStorage(usersArr);
+
+
+  // newItem.text(`${info.username} : ${info.userscore} points`);
+ 
   // usersArr.push(newItem);
-  console.log(info);
  
 
-  storeTaskInLocalStorage(info);
   resetQuiz()
  
 };
 
+
+function renderUser() {
+  usersArr.forEach((user) => {
+    let newItem = $('<li>');
+    newItem.text(`${user.username} `)
+    userList.append(newItem);
+  })
+}
+
 // Store Users
 function storeTaskInLocalStorage(info) {
-  let usersArr;
-  if(localStorage.getItem('usersArr') === null){
-    usersArr= [];
-  } else {
-    usersArr = JSON.parse(localStorage.getItem('usersArr'));
-  }
+  // if(localStorage.getItem('usersArr') === null){
+  //   usersArr= [];
+  // } else {
+  //   usersArr = JSON.parse(localStorage.getItem('usersArr'));
+  // }
 
+
+  
   // usersArr.push(info);
   console.log(usersArr)
 
@@ -171,5 +187,8 @@ function resetQuiz() {
   score = 0;
 }
 
+if(usersArr.length > 0) {
+  renderUser()
+}
 
 });
