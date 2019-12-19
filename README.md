@@ -1,6 +1,6 @@
 # Tyler's Multipl Choice Code Quiz
 
-This is a application that will test the users knowlege of code. The user will see a green button to start the quiz. There will be five questions. If the user gets a answer correct the background will show green and will be awarded 10 points and if the user guess wrong the background will be red and will be awarded no points. The user only has 30 seconds to complete this quiz. At the end of the quiz the user will submit their user name and score to the high scores list. The user can restart the quiz after they submit their name.
+This is a application that will test the users knowlege of code. The user will see a green button to start the quiz. There will be five questions. If the user gets a answer correct the background will show green and will be awarded 10 points and if the user guess wrong the background will be red and will be awarded no points. The user only has 45 seconds to complete this quiz. At the end of the quiz the user will submit their user name and score to the high scores list. The user can restart the quiz after they submit their name.
 
 <img class="img-fluid py-2" src="assets/img/img1.PNG" alt="screen shot" width="200" height="200"> 
 <img class="img-fluid py-2" src="assets/img/img2.PNG" alt="screen shot" width="200" height="200"> 
@@ -8,7 +8,7 @@ This is a application that will test the users knowlege of code. The user will s
 
 ## Getting Started
 
-These instructions will get you a started with how to build a random password generator.
+These instructions will get you a started with how to build a multiple choice quiz game.
 
 ### Prerequisites
 
