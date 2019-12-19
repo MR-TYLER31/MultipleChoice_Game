@@ -18,7 +18,6 @@ var clearUsers = $('#clear-users')
 var viewScore = $('#high-scores')
 var runningTimer;
 var currentQuestion;
-// var usersArr = [];
 let usersArr = JSON.parse(localStorage.getItem("usersArr")) || [];
 
  
@@ -30,9 +29,8 @@ $(document).ready(function() {
     answerBtn.on('click', selectAnswer);
     nextBtn.on('click', showQuestion);
     submitBtn.on('click', submitUser);
-    // viewScore.on('click', displayUsers)
-    // clearUsers.on('click', clearScores)
-    // restartBtn.on('click', restartQuiz)
+    clearUsers.on('click', clearScores)
+
 
 
 function startClock(){
@@ -60,8 +58,6 @@ function startClock(){
             showQuestion(currentQuestion);
 
     }
-
-
 
   
   // show question function
@@ -100,7 +96,6 @@ function startClock(){
       $(".card").css("background-color", "#dc3545")
     
     } 
-    // console.log(score)
 };
 
 // Game over function will display the header and user name form to submit to high scores
@@ -137,16 +132,13 @@ function submitUser (e) {
     userscore: score
   });
 
+  usersArr.sort((a,b) => b.userscore - a.userscore );
+  usersArr.splice(5);
+
   
 renderUser()
  
   storeTaskInLocalStorage(usersArr);
-
-
-  // newItem.text(`${info.username} : ${info.userscore} points`);
- 
-  // usersArr.push(newItem);
- 
 
   resetQuiz()
  
@@ -154,41 +146,38 @@ renderUser()
 
 
 function renderUser() {
+  userList.empty();
   usersArr.forEach((user) => {
     let newItem = $('<li>');
-    newItem.text(`${user.username} `)
+    newItem.text(`${user.username} : ${user.userscore} points`)
     userList.append(newItem);
   })
 }
 
 // Store Users
 function storeTaskInLocalStorage(info) {
-  // if(localStorage.getItem('usersArr') === null){
-  //   usersArr= [];
-  // } else {
-  //   usersArr = JSON.parse(localStorage.getItem('usersArr'));
-  // }
-
-
-  
-  // usersArr.push(info);
   console.log(usersArr)
 
   localStorage.setItem('usersArr', JSON.stringify(info));
-//  usersArr.push(info);
+
   
 }
 
-
 // reset so user can retake the quiz
 function resetQuiz() {
-  var seconds = $("#countdown").text(30);
+  var seconds = $("#countdown").text(45);
   questionBoxEl.addClass('hide');
   score = 0;
 }
 
 if(usersArr.length > 0) {
   renderUser()
+}
+
+// clear the users scores
+function clearScores() {
+  localStorage.removeItem('usersArr')
+  userList.empty()
 }
 
 });
