@@ -1,23 +1,23 @@
 var questionsArray = [
     {
         title: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers",],
-        answer: "alerts"
+        choices: ["Strings", "Booleans", "Alerts", "Numbers",],
+        answer: "Alerts"
     },
     {
       title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
+      choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
+      answer: "Parentheses"
     },
     {
       title: "Which of these are HTML tages",
-      choices: ["p", "ID", "onClick", "CSS"],
-      answer: "p"
+      choices: ["P", "ID", "onClick", "CSS"],
+      answer: "P"
     },
     {
       title: "You define (and create) a JavaScript object with __.",
-      choices: ["script tags", "quotes", "object literal", "curly brackets"],
-      answer: "object literal"
+      choices: ["Script Tags", "Quotes", "Object Literal", "Curly Brackets"],
+      answer: "Object Literal"
     },
     {
       title: "Get all the items from a array with__",
